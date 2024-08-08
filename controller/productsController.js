@@ -22,13 +22,13 @@ module.exports = {
   create: async function (req, res, next) {
     try {
       const { title, price, description, category, image } = req.body;
-      const product = new productsModel(
+      const product = new productsModel({
         title,
         price,
         description,
         category,
-        image
-      );
+        image,
+      });
       const newProduct = await product.save();
       res.status(201).json(newProduct);
     } catch (e) {
